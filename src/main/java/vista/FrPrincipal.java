@@ -6,7 +6,7 @@ package vista;
 
 import javax.swing.JPanel;
 import vista.paneles.*;
-
+import java.awt.CardLayout;
 /**
  *
  * @author USER
@@ -14,31 +14,32 @@ import vista.paneles.*;
 public class FrPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrPrincipal.class.getName());
-
+    private CardLayout card;
     /**
      * Creates new form FrPrincipal
      */
     public FrPrincipal() {
-        initComponents();
-        
-        
-        setTitle("UniTalent");
-        setLocationRelativeTo(null);
+    initComponents();
 
-        mostrarPanel(new PnLogin());
-        
-        
-    }
+    card = new CardLayout();
+
+    pnlContenido.setLayout(card);
+
+    pnlContenido.add(new PnLogin(), "LOGIN");
+    pnlContenido.add(new PanelRegistro(), "REGISTRO");
+
+    card.show(pnlContenido, "LOGIN");
+}
     
     public void mostrarPanel(JPanel panel){
 
         panel.setSize(800,600);
         panel.setLocation(0,0);
 
-        contenedor.removeAll();
-        contenedor.add(panel);
-        contenedor.revalidate();
-        contenedor.repaint();
+        contenedorPrincipal.removeAll();
+        contenedorPrincipal.add(panel);
+        contenedorPrincipal.revalidate();
+        contenedorPrincipal.repaint();
     }
 
     /**
@@ -50,52 +51,122 @@ public class FrPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenedor = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        contenedorPrincipal = new javax.swing.JPanel();
+        pnlMenu = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnEstudiantes = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
+        btnEmpresa = new javax.swing.JButton();
+        btnOfertasLab = new javax.swing.JButton();
+        btnPostulaciones = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
+        pnlContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 145, Short.MAX_VALUE)
+        jLabel1.setText("LOGO");
+
+        btnEstudiantes.setText("Estudiantes");
+        btnEstudiantes.addActionListener(this::btnEstudiantesActionPerformed);
+
+        btnInicio.setText("Inicio");
+        btnInicio.addActionListener(this::btnInicioActionPerformed);
+
+        btnEmpresa.setText("Empresa");
+        btnEmpresa.addActionListener(this::btnEmpresaActionPerformed);
+
+        btnOfertasLab.setText("Ofertas Laborales");
+
+        btnPostulaciones.setText("Postulaciones");
+
+        btnReportes.setText("Reportes");
+
+        btnCerrarSesion.setText("Cerrar Sesion");
+
+        javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
+        pnlMenu.setLayout(pnlMenuLayout);
+        pnlMenuLayout.setHorizontalGroup(
+            pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnPostulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnOfertasLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(21, 21, 21))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
+        pnlMenuLayout.setVerticalGroup(
+            pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
+                .addComponent(btnInicio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEstudiantes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmpresa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOfertasLab)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPostulaciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReportes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
-        contenedor.setLayout(contenedorLayout);
-        contenedorLayout.setHorizontalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout contenedorPrincipalLayout = new javax.swing.GroupLayout(contenedorPrincipal);
+        contenedorPrincipal.setLayout(contenedorPrincipalLayout);
+        contenedorPrincipalLayout.setHorizontalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        contenedorLayout.setVerticalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        contenedorPrincipalLayout.setVerticalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(contenedorLayout.createSequentialGroup()
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,19 +175,35 @@ public class FrPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpresaActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+        
+        card.show(pnlContenido, "LOGIN");
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantesActionPerformed
+
+        card.show(pnlContenido, "REGISTRO");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEstudiantesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,8 +231,16 @@ public class FrPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contenedor;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnEmpresa;
+    private javax.swing.JButton btnEstudiantes;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnOfertasLab;
+    private javax.swing.JButton btnPostulaciones;
+    private javax.swing.JButton btnReportes;
+    private javax.swing.JPanel contenedorPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel pnlContenido;
+    private javax.swing.JPanel pnlMenu;
     // End of variables declaration//GEN-END:variables
 }
