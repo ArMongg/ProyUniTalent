@@ -5,7 +5,9 @@
 package com.utp.estructurasdedatos.ejemplo.proybd;
 
 import javax.swing.JFrame;
+import vista.FrPrincipal;
 import vista.PanelRegistro;
+import vista.paneles.PnEstudiante;
 
 
 
@@ -17,15 +19,9 @@ public class Main {
 
     public static void main(String[] args) {
         
-        JFrame ventana = new JFrame("UniTalent");
-
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setSize(700,500);
-        ventana.setLocationRelativeTo(null);
-
-        ventana.setContentPane(new PanelRegistro());
-
-        ventana.setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+        new FrPrincipal().setVisible(true);
+    });
 
     }
 }

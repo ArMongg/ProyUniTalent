@@ -170,6 +170,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ofertas Laborales"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOfertasLabActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnPostulaciones">
               <Properties>
@@ -180,6 +183,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reportes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportesActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCerrarSesion">
               <Properties>
@@ -190,18 +196,7 @@
         </Container>
         <Container class="javax.swing.JPanel" name="pnlContenido">
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="378" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
         </Container>
       </SubComponents>
     </Container>

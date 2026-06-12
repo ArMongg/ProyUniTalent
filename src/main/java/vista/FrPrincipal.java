@@ -20,27 +20,27 @@ public class FrPrincipal extends javax.swing.JFrame {
      */
     public FrPrincipal() {
     initComponents();
+ // Crear CardLayout
+        card = new CardLayout();
 
-    card = new CardLayout();
+        // Asignarlo al panel de contenido
+        pnlContenido.setLayout(card);
 
-    pnlContenido.setLayout(card);
+        // Agregar paneles
+        pnlContenido.add(new PnLogin(), "LOGIN");
+        pnlContenido.add(new PanelRegistro(), "REGISTRO");
 
-    pnlContenido.add(new PnLogin(), "LOGIN");
-    pnlContenido.add(new PanelRegistro(), "REGISTRO");
+        pnlContenido.add(new PnEstudiante(), "ESTUDIANTE");
+        pnlContenido.add(new PnEmpresa(), "EMPRESA");
+        pnlContenido.add(new PnOferta(), "OFERTA");
+        pnlContenido.add(new PnPostulacion(), "POSTULACION");
+        pnlContenido.add(new PnReporte(), "REPORTE");
 
-    card.show(pnlContenido, "LOGIN");
+        // Mostrar panel inicial
+        card.show(pnlContenido, "LOGIN");
 }
     
-    public void mostrarPanel(JPanel panel){
-
-        panel.setSize(800,600);
-        panel.setLocation(0,0);
-
-        contenedorPrincipal.removeAll();
-        contenedorPrincipal.add(panel);
-        contenedorPrincipal.revalidate();
-        contenedorPrincipal.repaint();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,10 +77,12 @@ public class FrPrincipal extends javax.swing.JFrame {
         btnEmpresa.addActionListener(this::btnEmpresaActionPerformed);
 
         btnOfertasLab.setText("Ofertas Laborales");
+        btnOfertasLab.addActionListener(this::btnOfertasLabActionPerformed);
 
         btnPostulaciones.setText("Postulaciones");
 
         btnReportes.setText("Reportes");
+        btnReportes.addActionListener(this::btnReportesActionPerformed);
 
         btnCerrarSesion.setText("Cerrar Sesion");
 
@@ -138,16 +140,7 @@ public class FrPrincipal extends javax.swing.JFrame {
                 .addComponent(btnCerrarSesion))
         );
 
-        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
-        pnlContenido.setLayout(pnlContenidoLayout);
-        pnlContenidoLayout.setHorizontalGroup(
-            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
-        );
-        pnlContenidoLayout.setVerticalGroup(
-            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        pnlContenido.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout contenedorPrincipalLayout = new javax.swing.GroupLayout(contenedorPrincipal);
         contenedorPrincipal.setLayout(contenedorPrincipalLayout);
@@ -191,6 +184,8 @@ public class FrPrincipal extends javax.swing.JFrame {
 
     private void btnEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpresaActionPerformed
         // TODO add your handling code here:
+        
+        card.show(pnlContenido, "EMPRESA");
     }//GEN-LAST:event_btnEmpresaActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -201,9 +196,23 @@ public class FrPrincipal extends javax.swing.JFrame {
 
     private void btnEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantesActionPerformed
 
-        card.show(pnlContenido, "REGISTRO");
+        card.show(pnlContenido, "ESTUDIANTE");
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEstudiantesActionPerformed
+
+    private void btnOfertasLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertasLabActionPerformed
+
+
+        // TODO add your handling code here:
+        
+        card.show(pnlContenido, "OFERTA");
+    }//GEN-LAST:event_btnOfertasLabActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        card.show(pnlContenido, "REPORTE");
+        
+    }//GEN-LAST:event_btnReportesActionPerformed
 
     /**
      * @param args the command line arguments
